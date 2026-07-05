@@ -1,107 +1,164 @@
+<div align="center">
+
 # Unknown Unknowns
 
-> Three words: **kickoff** when you start, **wrapup** when you finish, **quiz-me** when
-> you're not sure. Everything else is the agent's job.
+**`kickoff` when you start &nbsp;·&nbsp; `wrapup` when you finish &nbsp;·&nbsp; `quiz-me` when you're not sure**
 
-The person who most needs help finding their blind spots is, by definition, the person
-who doesn't know they have them. So this toolkit doesn't ask you to learn a taxonomy or
-remember nine techniques — you invoke moments you already feel, and the agent picks the
-technique.
+Three commands that find what you don't know you don't know — before it gets expensive.
 
-Works with **Claude Code**, **OpenAI Codex CLI**, and any agent supporting the open
-[Agent Skills](https://agentskills.io) format (Cursor, Amp, …). Based on
+[![Agent Skills](https://img.shields.io/badge/Agent_Skills-compatible-4B8BBE)](https://agentskills.io)
+[![Claude Code](https://img.shields.io/badge/Claude_Code-plugin-D97757)](#claude-code)
+[![Codex CLI](https://img.shields.io/badge/Codex_CLI-supported-10A37F)](#openai-codex-cli)
+[![License: MIT](https://img.shields.io/badge/license-MIT-lightgrey)](./LICENSE)
+
+**English** · [中文](./README.zh-CN.md)
+
+</div>
+
+---
+
+## The problem
+
+Your prompt is a map. The codebase — with its history, conventions, and half-finished
+adapters — is the territory. Wherever they differ, the agent guesses. The more work you
+delegate, the more it guesses.
+
+The obvious fix is "know your unknowns." But there's a paradox: **the person who most
+needs to find their blind spots is, by definition, the person who doesn't know they have
+them.** You'll never think "I have unknown knowns right now, better run the technique
+for that."
+
+So this toolkit doesn't ship a taxonomy to memorize. It ships **three moments you
+already feel**:
+
+## Three moments
+
+### 🔍 `kickoff` — "I'm about to start"
+
+Diagnoses your unknowns, then runs **only** the techniques that fire — a blind spot
+briefing for unfamiliar territory, throwaway prototypes when you'll *know it when you
+see it*, a one-question-at-a-time interview for open decisions, semantics extraction
+from a reference — landing on a plan you can review in five minutes.
+
+```text
+You:    /kickoff add SSO — I've never touched this app's auth module
+
+Agent:  Two signals fired: unfamiliar territory, open decisions.
+        Blind spot pass on src/auth first…
+
+        · There's a half-finished OIDC adapter (PR #142, abandoned) — reuse or replace?
+        · Sessions live in signed cookies; SSO tokens won't fit. Decision needed.
+        · Question you didn't know to ask: which of the three login flows does SSO replace?
+
+        Interviewing you next — one question at a time, architecture first.
+```
+
+If nothing fires, it says **"no meaningful unknowns — just implement"** and gets out of
+the way. Kickoff is a diagnosis, not a ceremony.
+
+### 📦 `wrapup` — "I just finished"
+
+Packages the work into a buy-in doc that leads with the demo and answers reviewers'
+objections up front. Then quizzes you on what actually changed — including the existing
+code paths diffs never show — and only recommends merging on a full pass. Finally,
+banks the session's surprises into permanent context.
+
+### 🎯 `quiz-me` — "I'm not sure I understand this change"
+
+The quiz alone: explain, test, grade strictly. Ends with an explicit
+**PASS — safe to merge** or **NOT YET — misses on: <topics>**. Never softened, so you
+can trust a PASS.
+
+## The loop
+
+```mermaid
+flowchart LR
+    K["🔍 kickoff"] --> P["unknowns-first plan"]
+    P --> I["implement<br/><i>fresh session, deviations logged</i>"]
+    I --> W["📦 wrapup"]
+    W -. "learnings promoted to<br/>CLAUDE.md / AGENTS.md" .-> K
+```
+
+What you learn becomes the map for next time.
+
+## What's inside
+
+The nine techniques from Thariq's
 [*A Field Guide to Fable: Finding Your Unknowns*](https://x.com/trq212/article/2073100352921215386)
-by [Thariq (@trq212)](https://x.com/trq212).
+are all here — as the agent's internal toolbox (`references/` in each skill), loaded
+only when needed. You never have to name them:
 
-[中文说明 / Chinese README](./README.zh-CN.md)
-
-## Three commands
-
-| Moment | Command | What the agent does |
-|---|---|---|
-| About to start something | `kickoff` | Diagnoses your unknowns, then runs only what's needed: a blind spot briefing for unfamiliar territory, throwaway prototypes when you'll "know it when you see it", a one-question-at-a-time interview for open decisions, semantics extraction from a reference — landing on an unknowns-first plan you can review in five minutes |
-| Just finished | `wrapup` | Packages the work into a buy-in doc that leads with the demo, quizzes you on what actually changed (including the code paths diffs don't show), and only recommends merging when you pass — then banks the session's learnings into permanent context |
-| Not sure you understand a change | `quiz-me` | The quiz alone: explain, test, grade strictly, explicit PASS / NOT YET verdict |
-
-The nine techniques from the article — blind spot pass, brainstorms & prototypes,
-interviews, references, unknowns-first plans, implementation notes, pitches, quizzes —
-all still exist. They live in `references/` inside each skill as the agent's internal
-toolbox. You never have to name them.
-
-```
-kickoff ──→ plan ──→ implement (fresh session, notes kept) ──→ wrapup
-   ↑                                                              │
-   └────────────── what you learn becomes the map ────────────────┘
-```
+| You say… | Kickoff reaches for |
+|---|---|
+| "I've never touched this part of the codebase" | Blind spot pass |
+| "Show me options — I'll know it when I see it" | Brainstorm & throwaway prototypes |
+| "There are decisions I haven't made" | One-question-at-a-time interview |
+| "Make it work like this library" | Reference semantics extraction |
+| "OK, ready to build" | Unknowns-first plan + implementation notes |
 
 ## Install
 
-### Claude Code (plugin marketplace)
+#### Claude Code
 
 ```
 /plugin marketplace add lusipad/Unknown-unknowns
 /plugin install unknown-unknowns@unknown-unknowns
 ```
 
-### OpenAI Codex CLI
+#### OpenAI Codex CLI
 
 ```sh
 git clone https://github.com/lusipad/Unknown-unknowns.git
-cd Unknown-unknowns
-./install.sh --codex        # copies skills to $CODEX_HOME/skills (default ~/.codex/skills)
+cd Unknown-unknowns && ./install.sh --codex
 ```
 
-Windows (PowerShell): `.\install.ps1 -Codex`
+Windows: `.\install.ps1 -Codex`
 
-### Universal installer (Claude Code + Codex + Cursor + more)
+#### Universal (Claude Code + Codex + Cursor + more)
 
 ```sh
 npx skills add lusipad/Unknown-unknowns
 ```
 
+#### Manual
+
+Each skill is a plain folder with a `SKILL.md`. Copy any folder from `skills/` into
+your agent's skills directory (`~/.claude/skills/`, `~/.codex/skills/`, …).
+
 ### Optional: three always-on rules
 
-Two things users never remember to trigger: keeping implementation notes mid-task, and
-running wrapup before merging. Opt in per project:
+Two things nobody remembers to trigger: keeping implementation notes mid-task, and
+reviewing before merge. Opt in per project:
 
 ```sh
-./install.sh --rules /path/to/your/project     # or: .\install.ps1 -Rules D:\your\project
+./install.sh --rules /path/to/your/project    # Windows: .\install.ps1 -Rules D:\your\project
 ```
 
-This appends three lines to the project's `CLAUDE.md` / `AGENTS.md` (idempotent — safe
-to re-run): log deviations conservatively during plans, suggest `kickoff` when a
-previous attempt came back wrong, suggest `wrapup` before merging unreviewed changes.
-See [rules/unknowns-rules.md](./rules/unknowns-rules.md).
+Appends [three lines](./rules/unknowns-rules.md) to the project's
+`CLAUDE.md` / `AGENTS.md` (idempotent — safe to re-run).
 
-## When they trigger
+## Multilingual
 
-Explicitly: `/kickoff`, `/wrapup`, `/quiz-me` in Claude Code, or just name them in
-Codex. Automatically, when you say things like:
+Instructions stay in English (best model adherence), but every skill requires
+user-facing output — briefings, questions, quizzes, verdicts — **in the language you're
+speaking**. Triggering works in any language via semantic matching; 中文 trigger words
+(开工 / 收工 / 考考我) are built into the descriptions.
 
-- "I've never touched this part of the codebase" → kickoff (blind spot briefing)
-- "Show me a few directions, I'll know it when I see it" → kickoff (prototypes)
-- "The last attempt came back wrong and I don't know why" → kickoff (diagnosis)
-- "Done, package this up for review" → wrapup
-- "I'm not confident I understand what changed" → quiz-me
+## Design principles
 
-Chinese trigger words (开工 / 收工 / 考考我) are built into the skill descriptions.
-
-## Design notes
-
-- **Moments, not taxonomy.** Users reliably feel "starting" and "finishing"; they don't
+- **Moments, not taxonomy.** People reliably feel *starting* and *finishing*; they don't
   reliably notice "I have unknown knowns." Commands map to the former; the agent handles
   the latter.
-- **Progressive disclosure.** Three entry points; nine techniques as internal reference
-  files the agent reads on demand — cheap on context until needed.
-- **Portable by construction.** Frontmatter uses only `name` + `description`; bodies are
-  plain instructions with no agent-specific tool names.
-- **Multilingual.** Instructions stay in English (best model adherence), but every skill
-  requires user-facing output in the language the user is speaking. Triggering works in
-  any language via semantic matching; 中文 trigger words are built in.
-- **Kickoff is a diagnosis, not a ceremony.** If a task has no meaningful unknowns, it
-  says "just implement" and gets out of the way.
+- **Progressive disclosure.** Three entry points; nine techniques as reference files
+  read on demand — cheap on context until needed.
+- **Portable by construction.** Frontmatter is only `name` + `description` (the open
+  [Agent Skills](https://agentskills.io) format); bodies contain no agent-specific tool
+  names.
+- **Honest exits.** "Just implement" and "NOT YET" are first-class outcomes, not
+  failures.
 
-## License
+## Credits & license
 
-MIT — see [LICENSE](./LICENSE). Concepts credit
-[Thariq's field guide](https://x.com/trq212/article/2073100352921215386).
+Concepts from [Thariq (@trq212)](https://x.com/trq212)'s
+[*A Field Guide to Fable: Finding Your Unknowns*](https://x.com/trq212/article/2073100352921215386).
+MIT — see [LICENSE](./LICENSE).
