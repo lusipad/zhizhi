@@ -85,33 +85,45 @@ What you learn becomes the map for next time.
 
 The eight techniques from Thariq's
 [*A Field Guide to Fable: Finding Your Unknowns*](https://x.com/trq212/article/2073100352921215386)
-are all here — as the agent's internal toolbox (`references/` in each skill), loaded
-only when needed. You never have to name them:
+are all here — plus a ninth the framework logically demands: the **premise challenge**.
+The unknowns matrix assumes your "knowns" are true, but the most expensive failures come
+from false confidence, so kickoff also falsifies what you treat as fact.
+
+All nine live as the agent's internal toolbox (`references/` in each skill), loaded only
+when needed. You never have to name them:
 
 | You say… | Kickoff reaches for |
 |---|---|
 | "I've never touched this part of the codebase" | Blind spot pass |
+| "It's stored in Redis, nothing else calls it" | Premise challenge |
 | "Show me options — I'll know it when I see it" | Brainstorm & throwaway prototypes |
+| "Not sure this is even possible" | Feasibility spike |
 | "There are decisions I haven't made" | One-question-at-a-time interview |
 | "Make it work like this library" | Reference semantics extraction |
 | "OK, ready to build" | Unknowns-first plan + implementation notes |
 
 <details>
-<summary><b>Peek inside: all eight techniques</b></summary>
+<summary><b>Peek inside the toolbox</b></summary>
 <br/>
 
 | Technique | Phase | What it does | Doc |
 |---|---|---|---|
 | Blind spot pass | before | Explores unfamiliar territory, briefs you on the questions you didn't know to ask, potholes, prior art, and what good looks like | [blindspot.md](./skills/kickoff/references/blindspot.md) |
+| Premise challenge | before | Harvests everything treated as fact — yours and the agent's — and verifies it against the territory with evidence: CONFIRMED / FALSE / UNVERIFIABLE | [challenge.md](./skills/kickoff/references/challenge.md) |
 | Brainstorm & prototypes | before | 5–10 approaches ranked cheapest → most ambitious, or 3–4 wildly different single-file HTML mockups; your reactions become explicit criteria | [brainstorm.md](./skills/kickoff/references/brainstorm.md) |
+| Feasibility spike | before | Smallest experiment that yields a yes/no with measured evidence; pass/fail bar defined before running it | [brainstorm.md](./skills/kickoff/references/brainstorm.md) (Mode C) |
 | Interview | before | One question at a time, biggest architectural blast radius first, each with a suggested default; ends in a paste-ready decision log | [interview.md](./skills/kickoff/references/interview.md) |
 | Reference extraction | before | Reads a reference's actual source, produces a keep/adapt/drop semantics checklist before any code is written | [use-reference.md](./skills/kickoff/references/use-reference.md) |
 | Unknowns-first plan | before | Most-likely-to-change decisions on top (with confidence + what would flip them); mechanical work buried at the bottom | [plan.md](./skills/kickoff/references/plan.md) |
-| Implementation notes | during | Logs decisions, deviations, and surprises as they happen; conservative option + keep going instead of stalling | [impl-notes.md](./skills/kickoff/references/impl-notes.md) |
+| Implementation notes | during | Logs decisions, deviations, and surprises as they happen; conservative option + keep going — and when deviations pile up, triggers a re-diagnosis instead of patching a broken plan | [impl-notes.md](./skills/kickoff/references/impl-notes.md) |
 | Pitch & explainer | after | One demo-first buy-in doc that answers reviewers' objections before they ask | [pitch.md](./skills/wrapup/references/pitch.md) |
 | Understanding quiz | after | Report covering what diffs don't show, then a strictly graded quiz that gates the merge | [quiz.md](./skills/wrapup/references/quiz.md) |
 
 </details>
+
+Wrapup closes two loops, not one: it promotes this session's surprises into permanent
+context (better map), and asks *which of these could kickoff have caught, and why
+didn't it* (better map-making).
 
 ## Install
 
@@ -166,7 +178,7 @@ speaking**. Triggering works in any language via semantic matching; 中文 trigg
 - **Moments, not taxonomy.** People reliably feel *starting* and *finishing*; they don't
   reliably notice "I have unknown knowns." Commands map to the former; the agent handles
   the latter.
-- **Progressive disclosure.** Three entry points; eight techniques as reference files
+- **Progressive disclosure.** Three entry points; nine techniques as reference files
   read on demand — cheap on context until needed.
 - **Portable by construction.** Frontmatter is only `name` + `description` (the open
   [Agent Skills](https://agentskills.io) format); bodies contain no agent-specific tool

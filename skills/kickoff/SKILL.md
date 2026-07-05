@@ -1,6 +1,6 @@
 ---
 name: kickoff
-description: Kickoff (开工) — run before starting any non-trivial task. Diagnoses the gap between what the user asked for (the map) and what the codebase or domain actually requires (the territory), then applies only the techniques needed — blindspot briefing for unfamiliar territory, throwaway prototypes for "I'll know it when I see it", one-question-at-a-time interviews for ambiguities, reference extraction, and an unknowns-first plan. Use when the user says "kickoff", "开工", "帮我开始", "找找我的盲区", "help me start", "find my unknowns", "what am I missing", "I don't know where to start", or when a previous AI attempt came back wrong and they don't know why.
+description: Kickoff (开工) — run before starting any non-trivial task. Diagnoses the gap between what the user asked for (the map) and what the codebase or domain actually requires (the territory), then applies only the techniques needed — blindspot briefing for unfamiliar territory, premise challenges that falsify what's treated as fact, throwaway prototypes and feasibility spikes for "I'll know it when I see it", one-question-at-a-time interviews for ambiguities, reference extraction, and an unknowns-first plan. Use when the user says "kickoff", "开工", "帮我开始", "找找我的盲区", "help me start", "find my unknowns", "what am I missing", "I don't know where to start", or when a previous AI attempt came back wrong and they don't know why.
 ---
 
 # Kickoff
@@ -23,7 +23,9 @@ signals. Don't announce the framework; just assess:
 | Signal | Evidence |
 |---|---|
 | **Unfamiliar territory** | New domain or untouched part of the codebase; user says "I've never…" / "I don't know X" |
+| **Confident assertions** | Statements about the territory phrased as certainty — "it's stored in X", "nothing else calls this" — especially about code nobody has touched recently |
 | **Taste-driven criteria** | Vague quality words — "clean", "modern", "feels right" — user will know it when they see it |
+| **Feasibility in doubt** | Nobody knows if the approach is physically possible, accurate enough, or fast enough |
 | **Open decisions** | Ambiguities where different answers produce different architectures |
 | **A reference exists** | User points at (or you find) code, a library, or a site that already does it |
 
@@ -37,7 +39,8 @@ For each technique you run, **read its reference file first** and follow it:
 | Fires when | Technique | Read |
 |---|---|---|
 | Unfamiliar territory | Blind spot pass — brief them on the questions they didn't know to ask | `references/blindspot.md` |
-| Taste-driven criteria | Brainstorm & throwaway prototypes — turn reactions into explicit criteria | `references/brainstorm.md` |
+| Confident assertions | Premise challenge — verify what's treated as fact against the territory, before building on it | `references/challenge.md` |
+| Taste-driven criteria or feasibility in doubt | Brainstorm, throwaway prototypes, or a feasibility spike — turn reactions and measurements into explicit criteria | `references/brainstorm.md` |
 | A reference exists | Extract its semantics into a keep/adapt/drop checklist | `references/use-reference.md` |
 | Open decisions remain | Interview — one question at a time, biggest blast radius first | `references/interview.md` |
 

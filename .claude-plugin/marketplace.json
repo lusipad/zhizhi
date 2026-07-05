@@ -12,7 +12,7 @@
     {
       "name": "unknown-unknowns",
       "source": "./",
-      "description": "Three commands mapped to moments you actually feel: kickoff (diagnoses your unknowns before you start — blind spot briefings, throwaway prototypes, one-question interviews, reference extraction, unknowns-first plans), wrapup (buy-in doc + understanding quiz before merge, then banks the learnings), and quiz-me (strict PASS / NOT YET understanding check). The eight techniques from Thariq's field guide live inside as the agent's internal toolbox.",
+      "description": "Three commands mapped to moments you actually feel: kickoff (diagnoses your unknowns before you start — blind spot briefings, premise challenges, throwaway prototypes, feasibility spikes, one-question interviews, reference extraction, unknowns-first plans), wrapup (buy-in doc + understanding quiz before merge, then banks the learnings), and quiz-me (strict PASS / NOT YET understanding check). Nine techniques — eight from Thariq's field guide plus a premise-challenge falsification pass — live inside as the agent's internal toolbox.",
       "version": "1.0.0",
       "author": {
         "name": "lusipad",

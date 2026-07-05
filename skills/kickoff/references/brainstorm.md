@@ -24,7 +24,22 @@ let the user react, turn reactions into explicit criteria.
 4. Present side by side (a simple index page linking them works well); ask what draws
    the eye, what feels wrong, what's missing.
 
-## The reaction loop (both modes)
+## Mode C — Feasibility spike ("can this be done at all?")
+
+Distinct from Mode B: taste prototypes ask *what should it look like*; spikes ask *is
+this physically possible, accurate enough, fast enough*. Don't conflate them — a
+beautiful mockup of an approach that can't work is worse than no mockup.
+
+1. **Define the pass/fail threshold before running the spike** ("transcription must
+   place word boundaries within ±50ms on our sample audio"). Deciding the bar after
+   seeing results invites rationalizing.
+2. Build the smallest experiment that produces a yes/no answer with evidence — a script
+   against real sample data beats a toy demo.
+3. Output: **verdict + measured evidence + implications for the approach.** A failed
+   spike is the technique succeeding — it just saved the expensive version of the same
+   discovery.
+
+## The reaction loop (all modes)
 
 After each round, update a visible list called **Criteria discovered** — every reaction
 translated into an explicit, testable criterion ("dense tables over cards", "one primary

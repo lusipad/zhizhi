@@ -51,4 +51,7 @@ to permanent context** (CLAUDE.md, AGENTS.md, or team docs) — a surprise that 
 surprise the next person too is a documentation bug. Draft the exact lines to add; let
 the user say yes or no.
 
-This closes the loop: what this session learned becomes the map for next time.
+Then close the second loop: for each Surprise and Deviation, ask **"could kickoff have
+found this, and why didn't it?"** — a technique that didn't fire, a question the
+interview never asked, a premise nobody challenged. Propose one concrete adjustment for
+the next kickoff. The first loop improves the map; this one improves the map-making.

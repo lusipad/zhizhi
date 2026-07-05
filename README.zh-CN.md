@@ -39,6 +39,10 @@
 | **不知为不知** | 你知道还没想清楚的问题 | 访谈你，一次一个问题 |
 | **知，而不自知** | "看到才知道要什么" | 出几个原型让你挑 |
 | **不知，而不自知** | 完全没想到的坑 | 替你扫盲区 |
+| **不知，而以为知** | 你当作事实的、其实是错的 | 前提挑战，逐条证伪 |
+
+最后一种正是孔子那句话真正批评的状态——"强不知以为知"。原文的四象限默认你的
+"已知"都是对的，但最贵的事故恰恰来自错误的确信，所以我们给它补了一个专门的技巧。
 
 但这里有个悖论：**最需要发现盲区的人，恰恰是不知道自己有盲区的人。** 你永远不会
 想到"我现在处于'知而不自知'状态，该跑对应的技巧了"。
@@ -99,33 +103,44 @@ flowchart LR
 
 Thariq 的
 [*A Field Guide to Fable: Finding Your Unknowns*](https://x.com/trq212/article/2073100352921215386)
-里的八种技巧全都在——作为 Agent 的内部工具箱（每个 skill 的 `references/`），按需
-加载。你永远不需要叫出它们的名字：
+里的八种技巧全都在——外加框架在逻辑上必然要求的第九种：**前提挑战**。四象限默认
+你的"已知"是对的，而最贵的失败恰恰来自错误的确信，所以 kickoff 也会逐条证伪你
+当作事实的东西。
+
+九种技巧全部作为 Agent 的内部工具箱（每个 skill 的 `references/`）按需加载。你永远
+不需要叫出它们的名字：
 
 | 你说…… | kickoff 会拿出 |
 |---|---|
 | "这块代码我从来没碰过" | 盲区扫描 |
+| "会话肯定存在 Redis 里，没别人调这个接口" | 前提挑战 |
 | "给我看几个方向，我看到才知道要什么" | 头脑风暴 + 一次性原型 |
+| "不确定这事到底可不可行" | 可行性探针 |
 | "还有些事我没想好" | 一次一个问题的访谈 |
 | "照着这个库做一个" | 参考实现语义提炼 |
 | "好了，可以开始建了" | unknowns 优先的计划 + 实现笔记 |
 
 <details>
-<summary><b>展开看全部八种技巧</b></summary>
+<summary><b>展开看完整工具箱</b></summary>
 <br/>
 
 | 技巧 | 阶段 | 做什么 | 文档 |
 |---|---|---|---|
 | 盲区扫描 | 实现前 | 探索你不熟的领域，汇报你不知道该问的问题、坑、既有方案、以及"好"的标准 | [blindspot.md](./skills/kickoff/references/blindspot.md) |
+| 前提挑战 | 实现前 | 把你和 Agent 当作事实的断言全部拎出来，逐条对着疆域验证：CONFIRMED / FALSE / UNVERIFIABLE，每条附证据 | [challenge.md](./skills/kickoff/references/challenge.md) |
 | 头脑风暴 + 原型 | 实现前 | 5–10 个方案按"最便宜→最激进"排序，或 3–4 个风格迥异的单文件 HTML 原型；你的反应被沉淀成明确的判断标准 | [brainstorm.md](./skills/kickoff/references/brainstorm.md) |
+| 可行性探针 | 实现前 | 最小实验拿到带测量证据的 yes/no；及格线在跑实验**之前**定好，防止事后合理化 | [brainstorm.md](./skills/kickoff/references/brainstorm.md)（Mode C） |
 | 访谈 | 实现前 | 一次一个问题，先问影响架构最大的，每题附推荐默认值；产出可直接粘贴的决策日志 | [interview.md](./skills/kickoff/references/interview.md) |
 | 参考实现提炼 | 实现前 | 读参考的真实源码，先产出"保留/改造/舍弃"语义清单，再动手写代码 | [use-reference.md](./skills/kickoff/references/use-reference.md) |
 | unknowns 优先的计划 | 实现前 | 最可能被改的决策放最前（附置信度和"什么会推翻它"），机械性工作沉底 | [plan.md](./skills/kickoff/references/plan.md) |
-| 实现笔记 | 实现中 | 边干边记决策、偏差和意外；遇到意外选保守方案继续推进，而不是停下来干等 | [impl-notes.md](./skills/kickoff/references/impl-notes.md) |
+| 实现笔记 | 实现中 | 边干边记决策、偏差和意外；偏差累积到第 3 条或前提被推翻时，触发中途重诊而不是继续给破产的计划打补丁 | [impl-notes.md](./skills/kickoff/references/impl-notes.md) |
 | 提案文档 | 实现后 | demo 开头的 buy-in 文档，评审者还没开口就先回答他们的疑问 | [pitch.md](./skills/wrapup/references/pitch.md) |
 | 理解测验 | 实现后 | 报告覆盖 diff 看不到的部分，然后严格打分的测验守住合并关口 | [quiz.md](./skills/wrapup/references/quiz.md) |
 
 </details>
+
+wrapup 收的是两个环，不是一个：把这轮的意外沉淀进永久上下文（更好的地图），再回头
+问"这些意外里哪些是 kickoff 本该发现的、为什么漏了"（更好的画图方法）。
 
 ## 安装
 
