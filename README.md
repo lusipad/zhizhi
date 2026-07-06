@@ -19,14 +19,31 @@ Three commands that find what you don't know you don't know — before it gets e
 
 ## The problem
 
-Your prompt is a map. The codebase — with its history, conventions, and half-finished
-adapters — is the territory. Wherever they differ, the agent guesses. The more work you
-delegate, the more it guesses.
+> 「知之为知之，不知为不知，是知也。」
+>
+> *"To know what you know, and to know what you do not know — that is knowledge."*
+> — Confucius, Analects 2.17
 
-The obvious fix is "know your unknowns." But there's a paradox: **the person who most
-needs to find their blind spots is, by definition, the person who doesn't know they have
-them.** You'll never think "I have unknown knowns right now, better run the technique
-for that."
+Twenty-five centuries later, this is an engineering problem. Your prompt is a map. The
+codebase — with its history, conventions, and half-finished adapters — is the territory.
+Wherever they differ, the agent guesses. The more work you delegate, the more it guesses.
+
+Confucius' definition unfolds into five states, and each needs a different tool:
+
+| State | In agentic coding | Handled by |
+|---|---|---|
+| Knowing what you know | what's already in your prompt | solved |
+| Knowing what you don't know | questions you know to ask, still unanswered | the interview |
+| Not knowing what you know | "I'll know it when I see it" | prototypes |
+| Not knowing what you don't know | the pothole you never considered | the blind spot pass |
+| **Believing you know what you don't** | "it's stored in Redis" (it isn't) | the premise challenge |
+
+The last row is the state the quote itself warns against — and the one the classic 2×2
+misses, because it assumes your "knowns" are true.
+
+But there's a paradox: **the person who most needs to find their blind spots is, by
+definition, the person who doesn't know they have them.** You'll never think "I'm in
+the third state right now, better run the technique for it."
 
 So this toolkit doesn't ship a taxonomy to memorize. It ships **three moments you
 already feel**:
@@ -183,11 +200,11 @@ speaking**. Triggering works in any language via semantic matching; 中文 trigg
 - **Portable by construction.** Frontmatter is only `name` + `description` (the open
   [Agent Skills](https://agentskills.io) format); bodies contain no agent-specific tool
   names.
-- **Honest exits.** "Just implement" and "NOT YET" are first-class outcomes, not
-  failures.
+- **Honest exits（不知为不知）.** When you don't know, say you don't know: "just
+  implement" and "NOT YET" are first-class outcomes, not failures.
 
 ## Credits & license
 
 Concepts from [Thariq (@trq212)](https://x.com/trq212)'s
-[*A Field Guide to Fable: Finding Your Unknowns*](https://x.com/trq212/article/2073100352921215386).
-MIT — see [LICENSE](./LICENSE).
+[*A Field Guide to Fable: Finding Your Unknowns*](https://x.com/trq212/article/2073100352921215386),
+and the Analects, 2.17. MIT — see [LICENSE](./LICENSE).
