@@ -31,8 +31,15 @@ navigation helps.
 - A **tracing** question: "a request comes in with Y — walk me through what runs"
 - A **design** question: "why was alternative Z not used?"
 
-Mix multiple choice and short answer. No trivia — every answer should matter for
-operating or reviewing this code.
+Format for low friction — a quiz nobody takes verifies nothing:
+
+- **Default to multiple choice** (at least two-thirds), distractors built from
+  plausible misconceptions, not filler.
+- **At most one or two short-answer questions**, answerable in keywords or arrows —
+  say so explicitly.
+- Number questions and letter options so the whole quiz can be answered in one line
+  ("1B 2A 3C"). If the host provides a structured choice UI, use it.
+- No trivia — every answer should matter for operating or reviewing this code.
 
 ## 4. Grade strictly
 

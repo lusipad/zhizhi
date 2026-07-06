@@ -48,12 +48,22 @@ navigation helps), produce a single self-contained HTML file with the quiz at th
 - A **tracing** question: "a request comes in with Y — walk me through what runs"
 - A **design** question: "why was alternative Z not used?"
 
-Mix formats (multiple choice and short answer). No trivia — every question's answer
-should matter for operating or reviewing this code.
+Format for low friction — a quiz nobody takes verifies nothing:
+
+- **Default to multiple choice** (at least two-thirds of the questions), with
+  distractors built from plausible misconceptions, not filler. A user who actually
+  holds the misconception must find its distractor attractive.
+- **At most one or two short-answer questions** (the tracing question is usually the
+  one), answerable in a handful of keywords or arrows — say so explicitly.
+- Number questions and letter the options so the whole quiz can be answered in one
+  line ("1B 2A 3C"). If the host provides a structured choice UI, use it.
+- No trivia — every question's answer should matter for operating or reviewing this
+  code.
 
 ## Step 4 — Grade strictly
 
-- Grade each answer; partial credit is a fail for that question.
+- Grade each answer; partial credit is a fail for that question. For short answers,
+  judge the concept, not the prose — terse keyword answers are fine.
 - For each miss: re-explain with a file/line reference, then ask a **variant** of the
   question (not the same one — the user can echo, that's not understanding).
 - Repeat until everything passes.
