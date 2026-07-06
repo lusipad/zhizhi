@@ -5,8 +5,10 @@
 #   ./install.sh                     # install for every agent found on this machine
 #   ./install.sh --codex             # Codex CLI only  (-> $CODEX_HOME/skills, default ~/.codex/skills)
 #   ./install.sh --claude            # Claude Code only (-> ~/.claude/skills)
-#   ./install.sh --rules <project>   # also append the 3 always-on rules to that
-#                                    # project's CLAUDE.md / AGENTS.md (idempotent)
+#   ./install.sh --rules <project>   # also deliver the 3 always-on rules to that
+#                                    # project: CLAUDE.md / AGENTS.md append, plus
+#                                    # native .cursor/rules and .windsurf/rules files
+#                                    # when those dirs exist (idempotent)
 #
 # Claude Code users can skip this script entirely and use the plugin marketplace:
 #   /plugin marketplace add lusipad/zhizhi
@@ -86,6 +88,24 @@ append_rules() {
   if [ "$wrote" = 0 ]; then
     cat "$RULES" > "$proj/AGENTS.md"
     echo "Created $proj/AGENTS.md with rules (Claude Code users: consider copying into CLAUDE.md)"
+  fi
+
+  # Host-native rule files, generated from the one canonical file — no copies to drift.
+  if [ -d "$proj/.cursor" ]; then
+    mkdir -p "$proj/.cursor/rules"
+    {
+      printf -- '---\ndescription: zhizhi (知之) always-on rules — notes during work, kickoff after failed attempts, wrapup before merge\nalwaysApply: true\n---\n\n'
+      cat "$RULES"
+    } > "$proj/.cursor/rules/zhizhi-unknowns.mdc"
+    echo "Wrote $proj/.cursor/rules/zhizhi-unknowns.mdc"
+  fi
+  if [ -d "$proj/.windsurf" ]; then
+    mkdir -p "$proj/.windsurf/rules"
+    {
+      printf -- '---\ntrigger: always_on\n---\n\n'
+      cat "$RULES"
+    } > "$proj/.windsurf/rules/zhizhi-unknowns.md"
+    echo "Wrote $proj/.windsurf/rules/zhizhi-unknowns.md"
   fi
 }
 

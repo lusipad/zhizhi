@@ -173,21 +173,22 @@ npx skills add lusipad/zhizhi
 Each skill is a plain folder with a `SKILL.md`. Copy any folder from `skills/` into
 your agent's skills directory (`~/.claude/skills/`, `~/.codex/skills/`, …).
 
-### Optional: three always-on rules
+### Three always-on rules
 
 Two things nobody remembers to trigger: keeping implementation notes mid-task, and
-reviewing before merge. Opt in per project:
+reviewing before merge. One canonical file —
+[`rules/unknowns-rules.md`](./rules/unknowns-rules.md) — delivered in each host's
+native shape, so there are no copies to drift:
 
-```sh
-./install.sh --rules /path/to/your/project    # Windows: .\install.ps1 -Rules D:\your\project
-```
+| Host | How the rules arrive |
+|---|---|
+| Claude Code (plugin) | **Automatic** — a SessionStart hook injects them; opt out with `ZHIZHI_RULES=off` |
+| Claude Code / Codex (cloned) | `./install.sh --rules <project>` appends them to `CLAUDE.md` / `AGENTS.md` (idempotent) |
+| Cursor | the same command writes `.cursor/rules/zhizhi-unknowns.mdc` when the project has `.cursor/` |
+| Windsurf | the same command writes `.windsurf/rules/zhizhi-unknowns.md` when the project has `.windsurf/` |
+| `npx skills` / anything else | copy the three lines by hand |
 
-Appends [three lines](./rules/unknowns-rules.md) to the project's
-`CLAUDE.md` / `AGENTS.md` (idempotent — safe to re-run).
-
-Installed via the plugin marketplace or `npx skills` instead of cloning? Neither path
-touches your project's `CLAUDE.md` — copy the three lines from
-[`rules/unknowns-rules.md`](./rules/unknowns-rules.md) into it by hand.
+Windows: `.\install.ps1 -Rules D:\your\project`.
 
 ## Multilingual
 

@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Three words: kickoff when you start, wrapup when you finish, quiz-me when you're not sure. Finds your unknowns so the agent guesses less. Based on Thariq's 'A Field Guide to Fable: Finding Your Unknowns'.",
-    "version": "1.0.0"
+    "version": "1.1.0"
   },
   "plugins": [
     {
       "name": "zhizhi",
       "source": "./",
       "description": "Three commands mapped to moments you actually feel: kickoff (diagnoses your unknowns before you start — blind spot briefings, premise challenges, throwaway prototypes, feasibility spikes, one-question interviews, reference extraction, unknowns-first plans), wrapup (buy-in doc + understanding quiz before merge, then banks the learnings), and quiz-me (strict PASS / NOT YET understanding check). Nine techniques — eight from Thariq's field guide plus a premise-challenge falsification pass — live inside as the agent's internal toolbox.",
-      "version": "1.0.0",
+      "version": "1.1.0",
       "author": {
         "name": "lusipad",
         "url": "https://github.com/lusipad"
