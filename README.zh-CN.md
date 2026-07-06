@@ -179,7 +179,7 @@ Agent skills 目录即可（`~/.claude/skills/`、`~/.codex/skills/`……）。
 
 | 宿主 | 规则如何生效 |
 |---|---|
-| Claude Code（插件） | **自动**——SessionStart hook 注入；`ZHIZHI_RULES=off` 可关闭 |
+| Claude Code（插件） | **自动**——SessionStart hook 注入（sh 与 PowerShell 均可用；不想要就禁用插件） |
 | Claude Code / Codex（克隆仓库） | `./install.sh --rules <项目>` 追加到 `CLAUDE.md` / `AGENTS.md`（幂等） |
 | Cursor | 同一条命令在项目有 `.cursor/` 时生成 `.cursor/rules/zhizhi-unknowns.mdc` |
 | Windsurf | 同一条命令在项目有 `.windsurf/` 时生成 `.windsurf/rules/zhizhi-unknowns.md` |

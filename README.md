@@ -182,7 +182,7 @@ native shape, so there are no copies to drift:
 
 | Host | How the rules arrive |
 |---|---|
-| Claude Code (plugin) | **Automatic** — a SessionStart hook injects them; opt out with `ZHIZHI_RULES=off` |
+| Claude Code (plugin) | **Automatic** — a SessionStart hook injects them (works in sh and PowerShell; disable the plugin to opt out) |
 | Claude Code / Codex (cloned) | `./install.sh --rules <project>` appends them to `CLAUDE.md` / `AGENTS.md` (idempotent) |
 | Cursor | the same command writes `.cursor/rules/zhizhi-unknowns.mdc` when the project has `.cursor/` |
 | Windsurf | the same command writes `.windsurf/rules/zhizhi-unknowns.md` when the project has `.windsurf/` |

@@ -5,7 +5,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "[ \"$ZHIZHI_RULES\" = \"off\" ] || cat \"${CLAUDE_PLUGIN_ROOT}/rules/unknowns-rules.md\""
+            "command": "cat \"${CLAUDE_PLUGIN_ROOT}/rules/unknowns-rules.md\""
           }
         ]
       }
