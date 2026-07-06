@@ -1,6 +1,8 @@
 <div align="center">
 
-# Unknown Unknowns
+# zhizhi（知之）
+
+*zhī zhī — "to know it", from Analects 2.17*
 
 **`kickoff` when you start &nbsp;·&nbsp; `wrapup` when you finish &nbsp;·&nbsp; `quiz-me` when you're not sure**
 
@@ -147,15 +149,15 @@ didn't it* (better map-making).
 #### Claude Code
 
 ```
-/plugin marketplace add lusipad/Unknown-unknowns
-/plugin install unknown-unknowns@unknown-unknowns
+/plugin marketplace add lusipad/zhizhi
+/plugin install zhizhi@zhizhi
 ```
 
 #### OpenAI Codex CLI
 
 ```sh
-git clone https://github.com/lusipad/Unknown-unknowns.git
-cd Unknown-unknowns && ./install.sh --codex
+git clone https://github.com/lusipad/zhizhi.git
+cd zhizhi && ./install.sh --codex
 ```
 
 Windows: `.\install.ps1 -Codex`
@@ -163,7 +165,7 @@ Windows: `.\install.ps1 -Codex`
 #### Universal (Claude Code + Codex + Cursor + more)
 
 ```sh
-npx skills add lusipad/Unknown-unknowns
+npx skills add lusipad/zhizhi
 ```
 
 #### Manual

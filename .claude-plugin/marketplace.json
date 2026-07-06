@@ -1,5 +1,5 @@
 {
-  "name": "unknown-unknowns",
+  "name": "zhizhi",
   "owner": {
     "name": "lusipad",
     "url": "https://github.com/lusipad"
@@ -10,7 +10,7 @@
   },
   "plugins": [
     {
-      "name": "unknown-unknowns",
+      "name": "zhizhi",
       "source": "./",
       "description": "Three commands mapped to moments you actually feel: kickoff (diagnoses your unknowns before you start — blind spot briefings, premise challenges, throwaway prototypes, feasibility spikes, one-question interviews, reference extraction, unknowns-first plans), wrapup (buy-in doc + understanding quiz before merge, then banks the learnings), and quiz-me (strict PASS / NOT YET understanding check). Nine techniques — eight from Thariq's field guide plus a premise-challenge falsification pass — live inside as the agent's internal toolbox.",
       "version": "1.0.0",
@@ -18,8 +18,8 @@
         "name": "lusipad",
         "url": "https://github.com/lusipad"
       },
-      "homepage": "https://github.com/lusipad/Unknown-unknowns",
-      "repository": "https://github.com/lusipad/Unknown-unknowns",
+      "homepage": "https://github.com/lusipad/zhizhi",
+      "repository": "https://github.com/lusipad/zhizhi",
       "license": "MIT",
       "keywords": [
         "workflow",

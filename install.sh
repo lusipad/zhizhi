@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-# Install unknown-unknowns skills for OpenAI Codex CLI and/or Claude Code.
+# Install zhizhi skills for OpenAI Codex CLI and/or Claude Code.
 #
 # Usage:
 #   ./install.sh                     # install for every agent found on this machine
@@ -9,8 +9,8 @@
 #                                    # project's CLAUDE.md / AGENTS.md (idempotent)
 #
 # Claude Code users can skip this script entirely and use the plugin marketplace:
-#   /plugin marketplace add lusipad/Unknown-unknowns
-#   /plugin install unknown-unknowns@unknown-unknowns
+#   /plugin marketplace add lusipad/zhizhi
+#   /plugin install zhizhi@zhizhi
 
 set -e
 
