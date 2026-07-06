@@ -25,7 +25,8 @@ Default Markdown; a single self-contained HTML file if the change is big enough 
 navigation helps.
 
 Write the report to a file, not only into chat — grading spans multiple turns, and the
-report is the answer key; it must survive context compaction.
+report is the answer key; it must survive context compaction. Put it where the project
+keeps working documents (or a scratch directory), never loose in the source tree.
 
 ## 3. Quiz — 5–8 questions, must include one of each
 

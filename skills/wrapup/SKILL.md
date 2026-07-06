@@ -21,8 +21,8 @@ GIF, runnable link). For user-facing work with no demo evidence, make some first
 
 No `implementation-notes.md`? Don't skip what it would have carried: reconstruct the
 deviations and surprises from the session history and the diff, and mention once —
-not more — that the always-on rules (`rules/unknowns-rules.md`) capture these
-automatically next time.
+not more — that zhizhi's three always-on rules capture these automatically next time
+(the README's rules section has the one-liner to install them).
 
 **Mind the context budget** — wrapup runs when the session is at its fullest. Everything
 it consumes can live on disk (diff, plan, notes), so with notes on disk it runs fine in

@@ -40,7 +40,8 @@ Default to Markdown. If the user asks for HTML (or the change is big enough that
 navigation helps), produce a single self-contained HTML file with the quiz at the bottom.
 
 Write the report to a file, not only into chat — grading spans multiple turns, and the
-report is the answer key; it must survive context compaction.
+report is the answer key; it must survive context compaction. Put it where the project
+keeps working documents (or a scratch directory), never loose in the source tree.
 
 ## Step 3 — Quiz
 

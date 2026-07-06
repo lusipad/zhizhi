@@ -182,9 +182,8 @@ Agent skills 目录即可（`~/.claude/skills/`、`~/.codex/skills/`……）。
 往项目的 `CLAUDE.md` / `AGENTS.md` 追加[三行规则](./rules/unknowns-rules.md)
 （幂等，重复运行安全）。
 
-通过插件市场或 `npx skills` 安装的？那两条路径只装 skills——请手动把
-[`rules/unknowns-rules.md`](./rules/unknowns-rules.md) 里的三行复制进项目的
-`CLAUDE.md`。
+通过插件市场或 `npx skills` 安装的？那两条路径都不会碰你项目的 `CLAUDE.md`——请手动把
+[`rules/unknowns-rules.md`](./rules/unknowns-rules.md) 里的三行复制进去。
 
 ## 多语言
 
