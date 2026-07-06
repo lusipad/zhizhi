@@ -3,6 +3,11 @@
 Extract the decisions hiding in the user's head — one question at a time, biggest blast
 radius first.
 
+**Language:** templates and section names in this file are the spec, not literal output —
+render everything user-facing in the user's language. Code identifiers, file paths, and
+anchor tokens (CONFIRMED / FALSE / UNVERIFIABLE, PASS / NOT YET, notes headings) stay in
+English.
+
 ## 1. Prepare (silently)
 
 Build a private list of every ambiguity from the task, plan drafts, criteria, and code.
@@ -13,7 +18,10 @@ Sort by blast radius:
 3. **Behavior & UX flows** — edge case policy, error handling
 4. **Surface polish** — naming, copy, layout
 
-Discard questions the territory already answers. Never ask what you can look up.
+Discard questions the territory already answers. Never ask what you can look up. Facts
+you *can't* look up (unreachable systems, what a teammate actually observed) are fair
+material — flag them as verification, not decisions, and prefer asking for command
+output over recollection.
 
 ## 2. Interview
 
@@ -41,5 +49,6 @@ Format for direct pasting into the plan.
 ## Guardrails
 
 - Don't re-ask what the user already said — quote it back if you need confirmation.
-- If the user answers "I don't know" twice on the same topic, that topic needs the
-  brainstorm or blindspot technique, not more pressure.
+- If the user answers "I don't know" twice on the same topic, that topic needs
+  brainstorm, blindspot, or a diagnostic spike — whichever hasn't run yet — not more
+  pressure.

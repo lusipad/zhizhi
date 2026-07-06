@@ -5,6 +5,11 @@ them during prototyping is cheap; finding them mid-implementation is expensive �
 spec changes cause drastically different implementations. Make cheap concrete things,
 let the user react, turn reactions into explicit criteria.
 
+**Language:** templates and section names in this file are the spec, not literal output —
+render everything user-facing in the user's language. Code identifiers, file paths, and
+anchor tokens (CONFIRMED / FALSE / UNVERIFIABLE, PASS / NOT YET, notes headings) stay in
+English.
+
 ## Mode A — Approach brainstorm (strategy, architecture, product)
 
 1. Restate the problem in one paragraph; list known constraints.
@@ -18,23 +23,31 @@ let the user react, turn reactions into explicit criteria.
 
 1. Build **3–4 wildly different directions**, not four variations of one idea. If they'd
    all get the same one-word label ("minimal"), they're not different enough.
-2. Each is a **single self-contained HTML file with fake data**. No backend, no build
-   step, no wiring into the real app. Openable by double-click.
-3. Write prototypes to a scratch/temp directory, never into the project source tree.
+2. Each is a **single self-contained HTML file with fake data in the user's language** —
+   taste reactions to English placeholder text don't transfer, especially typography and
+   density. No backend, no build step, no wiring into the real app.
+3. Write prototypes somewhere the user can actually open and that outlives the turn —
+   never the project source tree. On a remote or sandboxed host, a gitignored
+   `prototypes/` folder in the repo, with the exact paths to open in a browser.
 4. Present side by side (a simple index page linking them works well); ask what draws
    the eye, what feels wrong, what's missing.
 
-## Mode C — Feasibility spike ("can this be done at all?")
+## Mode C — Feasibility spike ("can this be done at all — or why does it keep failing?")
 
 Distinct from Mode B: taste prototypes ask *what should it look like*; spikes ask *is
-this physically possible, accurate enough, fast enough*. Don't conflate them — a
+this physically possible, accurate enough, fast enough* — or, for diagnostic work,
+*which hypothesis about the failure survives an experiment*. Don't conflate them — a
 beautiful mockup of an approach that can't work is worse than no mockup.
 
 1. **Define the pass/fail threshold before running the spike** ("transcription must
    place word boundaries within ±50ms on our sample audio"). Deciding the bar after
-   seeing results invites rationalizing.
+   seeing results invites rationalizing. If the threshold is itself an undecided
+   question ("how fast is fast enough?"), ask that single interview question early,
+   out of order, before running the spike.
 2. Build the smallest experiment that produces a yes/no answer with evidence — a script
-   against real sample data beats a toy demo.
+   against real sample data beats a toy demo. If the spike needs an environment you
+   can't reach, deliver a runnable script plus the pre-committed bar for the user to
+   execute and report.
 3. Output: **verdict + measured evidence + implications for the approach.** A failed
    spike is the technique succeeding — it just saved the expensive version of the same
    discovery.
@@ -43,7 +56,7 @@ beautiful mockup of an approach that can't work is worse than no mockup.
 
 After each round, update a visible list called **Criteria discovered** — every reaction
 translated into an explicit, testable criterion ("dense tables over cards", "one primary
-action per screen"). Iterate until the user converges.
+action per screen"). Default to two reaction rounds; ask before a third.
 
 **The criteria list is the real deliverable, not the prototypes.** Output it in a form
 that pastes into the plan.

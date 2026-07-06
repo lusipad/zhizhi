@@ -7,6 +7,11 @@ rubber-stamp.
 Fold in whatever this kickoff produced: criteria list, decision log, blindspot briefing,
 semantics checklist.
 
+**Language:** templates and section names in this file are the spec, not literal output —
+render everything user-facing in the user's language. Code identifiers, file paths, and
+anchor tokens (CONFIRMED / FALSE / UNVERIFIABLE, PASS / NOT YET, notes headings) stay in
+English.
+
 ## Write the plan in this exact order
 
 ### 1. Decisions you'll most likely tweak (top of the document)
@@ -18,6 +23,10 @@ Data model changes, new type interfaces, API shapes, anything user-facing. For e
 - **What would flip it** — the specific evidence or answer that would change the decision
 
 This section is the review surface. Readable in five minutes.
+
+For diagnostic tasks ("why does X keep failing?"), this section holds **ranked
+hypotheses** instead — each with confidence and the cheapest experiment that would
+flip it.
 
 ### 2. Assumptions
 
@@ -33,6 +42,9 @@ Pre-authorize the implementer:
   going.** Define "conservative" for this task explicitly.
 - List what must **stop and ask** instead: destructive migrations, security surface,
   anything that invalidates the plan's premise.
+- For inherently destructive work (production migrations, data deletion), invert the
+  default: enumerate the few places where keep-going is safe; everything else stops
+  and asks.
 
 ### 4. Mechanical work (bottom)
 
@@ -50,7 +62,11 @@ their attention on the mechanical section.
 
 ## Handoff
 
-Recommend executing in a **fresh session**: pass the plan plus any artifacts, and
-include the implementation-notes setup (see `impl-notes.md`) in the handoff instructions
-so deviations get logged instead of silently improvised. What the implementation learns
-becomes the map for next time.
+Recommend executing in a **fresh session**: write the plan and kickoff artifacts to
+stable repo paths first, then pass them along with the implementation-notes setup (see
+`impl-notes.md`) so deviations get logged instead of silently improvised. Scale the
+handoff to the plan — if the mechanical section is essentially the whole plan, skip the
+fresh session and the notes file. If humans, not an agent session, will execute (a prod
+cutover, an ops runbook), replace the fresh-session/notes instructions with a named log
+owner and the same Decisions/Deviations/Surprises checklist inside the document. What
+the execution learns becomes the map for next time.
