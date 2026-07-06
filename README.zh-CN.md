@@ -171,16 +171,21 @@ npx skills add lusipad/zhizhi
 每个 skill 就是一个含 `SKILL.md` 的普通文件夹。把 `skills/` 下任意文件夹复制到你的
 Agent skills 目录即可（`~/.claude/skills/`、`~/.codex/skills/`……）。
 
-### 可选：三条常驻规则
+### 三条常驻规则
 
-有两件事没人会记得主动触发：干活途中记实现笔记，以及合并前做检查。按项目选择性注入：
+有两件事没人会记得主动触发：干活途中记实现笔记，以及合并前做检查。规则只有一份正本——
+[`rules/unknowns-rules.md`](./rules/unknowns-rules.md)——按每种宿主的原生形态送达，
+没有会漂移的拷贝：
 
-```sh
-./install.sh --rules /path/to/your/project    # Windows: .\install.ps1 -Rules D:\your\project
-```
+| 宿主 | 规则如何生效 |
+|---|---|
+| Claude Code（插件） | **自动**——SessionStart hook 注入（sh 与 PowerShell 均可用；不想要就禁用插件） |
+| Claude Code / Codex（克隆仓库） | `./install.sh --rules <项目>` 追加到 `CLAUDE.md` / `AGENTS.md`（幂等） |
+| Cursor | 同一条命令在项目有 `.cursor/` 时生成 `.cursor/rules/zhizhi-unknowns.mdc` |
+| Windsurf | 同一条命令在项目有 `.windsurf/` 时生成 `.windsurf/rules/zhizhi-unknowns.md` |
+| `npx skills` / 其他宿主 | 手动复制那三行 |
 
-往项目的 `CLAUDE.md` / `AGENTS.md` 追加[三行规则](./rules/unknowns-rules.md)
-（幂等，重复运行安全）。
+Windows：`.\install.ps1 -Rules D:\your\project`。
 
 ## 多语言
 

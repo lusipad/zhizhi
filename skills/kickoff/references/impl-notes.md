@@ -4,6 +4,10 @@ No matter how much planning happened, unknown unknowns lurk in the code. Notes t
 from silent improvisation into a record. Embed these instructions in the plan's handoff
 so the implementing session follows them.
 
+**Language:** headings in the template below stay in English — wrapup locates them by
+name. Write the entries themselves in the user's language; code identifiers and file
+paths stay in English.
+
 ## Setup
 
 At the start of implementation, create `implementation-notes.md` in the repo root (or

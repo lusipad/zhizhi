@@ -6,8 +6,10 @@
   .\install.ps1                  # install for every agent found on this machine
   .\install.ps1 -Codex           # Codex CLI only  (-> $env:CODEX_HOME\skills, default ~\.codex\skills)
   .\install.ps1 -Claude          # Claude Code only (-> ~\.claude\skills)
-  .\install.ps1 -Rules D:\proj   # also append the 3 always-on rules to that
-                                 # project's CLAUDE.md / AGENTS.md (idempotent)
+  .\install.ps1 -Rules D:\proj   # also deliver the 3 always-on rules to that
+                                 # project: CLAUDE.md / AGENTS.md append, plus native
+                                 # .cursor/rules and .windsurf/rules files when those
+                                 # dirs exist (idempotent)
 
   Claude Code users can skip this script entirely and use the plugin marketplace:
     /plugin marketplace add lusipad/zhizhi
@@ -68,6 +70,22 @@ function Add-Rules([string]$proj) {
   if (-not $wrote) {
     Copy-Item $rulesFile (Join-Path $proj 'AGENTS.md')
     Write-Host "Created $proj\AGENTS.md with rules (Claude Code users: consider copying into CLAUDE.md)"
+  }
+
+  # Host-native rule files, generated from the one canonical file — no copies to drift.
+  $rulesBody = Get-Content $rulesFile -Raw
+  if (Test-Path (Join-Path $proj '.cursor')) {
+    $cursorDir = Join-Path $proj '.cursor\rules'
+    New-Item -ItemType Directory -Force $cursorDir | Out-Null
+    $front = "---`ndescription: zhizhi (知之) always-on rules — notes during work, kickoff after failed attempts, wrapup before merge`nalwaysApply: true`n---`n`n"
+    Set-Content -Path (Join-Path $cursorDir 'zhizhi-unknowns.mdc') -Value ($front + $rulesBody) -NoNewline
+    Write-Host "Wrote $cursorDir\zhizhi-unknowns.mdc"
+  }
+  if (Test-Path (Join-Path $proj '.windsurf')) {
+    $windsurfDir = Join-Path $proj '.windsurf\rules'
+    New-Item -ItemType Directory -Force $windsurfDir | Out-Null
+    Set-Content -Path (Join-Path $windsurfDir 'zhizhi-unknowns.md') -Value ("---`ntrigger: always_on`n---`n`n" + $rulesBody) -NoNewline
+    Write-Host "Wrote $windsurfDir\zhizhi-unknowns.md"
   }
 }
 
